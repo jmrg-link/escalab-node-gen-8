@@ -1,0 +1,17 @@
+{
+  "name": "jmrg-escalab-node-gen_8",
+  "version": "1.0.0",
+  "description": "Proyecto Escalab Academy JMRG control horario",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "express.js",
+    "nodejs",
+    "js",
+    "api"
+  ],
+  "author": "Jesús Mª Rico Gonzalez",
+  "license": "MIT"
+}
