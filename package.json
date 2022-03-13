@@ -4,7 +4,8 @@
   "description": "Proyecto Escalab Academy JMRG control horario",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "set NODE_DEV=development&& set MORGAN=tiny&& nodemon index.js",
+    "start": "set NODE_ENV=production&& set MORGAN=combined&& node index.js"
   },
   "keywords": [
     "express.js",

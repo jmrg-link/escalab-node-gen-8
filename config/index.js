@@ -8,10 +8,11 @@ const config = {
         port: process.env.PORT || 8000 ,
         dev: process.env.NODE_DEV || 'development',
         prod: process.env.NODE_ENV || 'production',
+        tools: process.env.MORGAN
     },
     bbdd:{
-        db_cnn_prod: process.env.DB_CNN_PROD ,
-        db_cnn_dev: process.env.DB_CNN_DEV ,
+        db_prod: process.env.DB_PROD ,
+        db_dev: process.env.DB_DEV ,
     }
 };
 
