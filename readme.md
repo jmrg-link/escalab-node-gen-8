@@ -49,7 +49,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.4",
     "winston": "^3.6.0",
-    "colorette": "^2.0.16"
+    "colorette": "^2.0.16",
+    "dayjs":"1.10.8"
   },
 "devDependencies": {
     "@types/express": "^4.17.13",
