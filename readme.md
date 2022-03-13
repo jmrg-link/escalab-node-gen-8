@@ -42,19 +42,20 @@
 ## Dependencias usadas :bookmark_tabs:
 ``` javascript
 "dependencies": {
+    "app-root-path": "^3.0.0",
     "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
-    "express-validator": "^6.14.0",
+    "express-validation": "^3.0.8",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.2.4",
-    "winston": "^3.6.0",
-    "colorette": "^2.0.16",
-    "dayjs":"1.10.8"
+    "mongoose": "^6.2.6",
+    "morgan": "^1.10.0",
+    "winston": "^3.6.0"
   },
-"devDependencies": {
-    "@types/express": "^4.17.13",
+  "devDependencies": {
     "nodemon": "^2.0.15"
-  },
+  }
 
 ```
