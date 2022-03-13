@@ -1,5 +1,6 @@
 ### custom ignore files ###
-
+*.log
+./logs/*.log
 ### dotenv ###
 .env
 
