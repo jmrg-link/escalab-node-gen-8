@@ -2,7 +2,7 @@
 
 const http = require('http');
 const app = require('./server');
-const config = require('./config');
+const { config } = require('./config');
 
 // Read fs key xxx.pem
 
@@ -14,5 +14,5 @@ const server = http.createServer(app);
 
 // listen server http with express APP
 server.listen(port, () => {
-    console.log(`Server running is port : ${port}`);
+    console.log(`Server running is port : ${ port } 🧑‍💻`);
   });

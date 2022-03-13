@@ -2,9 +2,11 @@
 const express = require('express');
 const morgan = require('morgan')
 const logger = require('../utils')
-const { tools } = config.server;
+const {config} = require('../config')
 const api = require('./api/v1');
 
+
+const { tools } = config.server;
 // db
 
 // Iniciate App
