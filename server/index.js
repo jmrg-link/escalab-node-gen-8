@@ -14,8 +14,6 @@ const { tools } = config.server;
 const app = express()
 app.use(express.json({ limit: "2mb" }))
 
-
-
 // Setup middleware
 app.use(cors());
 app.use(morgan(tools, { stream: logger.stream }));
