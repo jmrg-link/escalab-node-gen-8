@@ -1,25 +1,33 @@
 //server/index.js
-const express = require('express');
-
+const express = require('express').Router();
 const morgan = require('morgan')
+const { readdirSync } = require("fs")
 const cors = require('cors')
-const logger = require('../utils')
 const {config} = require('../config')
-const api = require('./api/v1');
+const logger = require('../utils')
 
 // const global file
 const { tools } = config.server;
 
 // Iniciate App
 const app = express()
-app.use(express.json({ limit: "2mb" }))
 
 // Setup middleware
-app.use(cors());
 app.use(morgan(tools, { stream: logger.stream }));
+app.use(express.json({ limit: "2mb" }))
+app.use(cors());
 
-// Setup router and routes versionate v1 & more
-app.use('/api/v1', api)
+// ROUTES - > Setup router and routes versionate v1 & more
+readdirSync("./api/v1/global/routes").map((r) => app.use("/api", require("./api/v1/global/routes/" + r)));
+//readdirSync("./api/v1/timeControl/routes").map((r) => app.use("/api", require("./api/v1/timeControl/routes/" + r)));
 
+// No route found handler
+app.use((req, res, next) => {
+    next({
+      message: 'Route not found',
+      statusCode: 404,
+      level: 'warn',
+    });
+  });
 
 module.exports = app;

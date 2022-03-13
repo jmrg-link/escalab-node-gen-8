@@ -1,1 +1,1 @@
-//server/api/v1/global/middlewares/index.js
+//server/api/v1/global/controllers/index.js
