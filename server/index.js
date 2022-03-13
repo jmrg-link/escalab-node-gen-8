@@ -1,5 +1,5 @@
 //server/index.js
-const express = require('express').Router();
+const express = require('express')
 const morgan = require('morgan')
 const { readdirSync } = require("fs")
 const cors = require('cors')
@@ -18,7 +18,7 @@ app.use(express.json({ limit: "2mb" }))
 app.use(cors());
 
 // ROUTES - > Setup router and routes versionate v1 & more
-readdirSync("./api/v1/global/routes").map((r) => app.use("/api", require("./api/v1/global/routes/" + r)));
+readdirSync("./server/api/v1/global/routes").map((r) => app.use("/api/v1", require("./api/v1/global/routes/" + r)));
 //readdirSync("./api/v1/timeControl/routes").map((r) => app.use("/api", require("./api/v1/timeControl/routes/" + r)));
 
 // No route found handler
