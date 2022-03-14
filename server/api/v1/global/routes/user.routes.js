@@ -32,10 +32,8 @@ router.post( "/user" )
 // FINISH [ POST ] \\
 // [*************] \\
 
-
 // [DELETE - DELETE]
 router.delete( "/user/:id" )
-
 // FINISH [ DELETE ] \\
 // [***************] \\
 module.exports = router;
