@@ -15,14 +15,14 @@ router.get( "/users" )
 // [************] \\
 
 // [PUT - UPDATE]
-// [PUT] - Perfil Usuario [ROLE | GUEST] : solo puede actualizarse a si mismo datos básicos.
-// [PUT] - Perfil Usuario [ROLE | "ADMIN" - "OFFICE" ] : puede actualizar [ADMIN USER - OFFICE & GUEST ] puede actualizardatos básicos.
-// [PUT] - Perfil Usuario [ROLE | "ADMIN" - "OFFICE" ] :
-// [PUT] - Activar o Desactivar usuario por ID
+// [PUT] - Perfil Usuario [ROLE | GUEST] : solo puede actualizarse a sí mismo datos básicos.
+// [PUT] - Perfil Usuario [ROLE | "ADMIN" - "OFFICE" ] : puede actualizar [ADMIN USER - OFFICE & GUEST] puede actualizar datos básicos.
+// [PUT] - Activar usuario por ID
 router.put( "/user/:id/active" )
 // [PUT] - Desactivar usuario por ID
 router.put( "/user/:id/desactivate" )
-
+// [PUT] - Actualizar datos básicos de usuario por ID
+router.put( "/user/:id" )
 // FINISH [ PUT ] \\
 // [************] \\
 
