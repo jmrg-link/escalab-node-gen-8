@@ -14,4 +14,5 @@ RoleSchema.methods.toJSON = function () {
     role.id = _id;
     return role;
 }
+
 module.exports = model( "Roles" , RoleSchema );
