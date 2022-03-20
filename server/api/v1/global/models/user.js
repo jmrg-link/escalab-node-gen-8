@@ -1,7 +1,7 @@
-const mongoose = require( "mongoose" );
-const { ObjectId , Array , String , Number } = mongoose.Schema;
+const { model , Schema } = require( "mongoose" );
+const { ObjectId , Array , String , Number } = Schema;
 
-const userSchema = new mongoose.Schema(
+const userSchema = new Schema(
     {
         username: {
             type: String ,
@@ -63,4 +63,4 @@ const userSchema = new mongoose.Schema(
     }
 );
 
-module.exports = mongoose.model( "User" , userSchema );
+module.exports = model( "User" , userSchema );
