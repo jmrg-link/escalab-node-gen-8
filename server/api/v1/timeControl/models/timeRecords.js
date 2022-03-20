@@ -5,7 +5,8 @@ const User = require('../../global/models/user');
 const timeRecordSchema = new Schema(
     {
         selectDay:{
-            day : { type : Date, default: new Date().getTime() },
+            init: { type : Date, default: new Date().start.getTime() },
+            finish:  { type : Date, default: new Date().end.getTime() },
             user: {
                 type: Schema.Types.ObjectId,
                 ref:'User',
