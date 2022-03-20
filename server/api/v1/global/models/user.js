@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { ObjectId } = mongoose.Schema;
+const { ObjectId , Array , String , Number  } = mongoose.Schema;
 
 const userSchema = new mongoose.Schema(
   {
@@ -31,16 +31,15 @@ const userSchema = new mongoose.Schema(
       minlength: [3, "Min 3 letters"],
       maxlength: [16, "Max 16 letters"],
       trim: true,
-      required: [true, "email is required"],
     },
     status: {
-      type: String,
+      type: [],
       required: [true, "Status is required"],
       default: "Active",
       enum: ["Active", "Inactive"],
     },
     images: {
-      type: String,
+      type: Array,
       trim: true,
     },
     password: {

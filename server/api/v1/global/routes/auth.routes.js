@@ -1,14 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-// endpoints global auth
-// GET - READ
-//router.get("/users")
+// [ENDPOINTS GLOBAL AUTH]
 
-// POST - CREATE
-//router.post("/")
-
-// DELETE - DELETE
-//router.delete("/")
-
+// [POST - CREATE]
+// [POST] - Login User Auth with Token [ROLE]
+router.post( "/login" )
+// FINISH [ POST ] \\
+// [*************] \\
 module.exports = router;
