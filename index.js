@@ -17,5 +17,5 @@ const server = http.createServer(app);
 
 // listen server http with express APP
 server.listen(port, () => {
-    console.log(`🧑‍💻 - Server running is port :${ port } -🧑‍💻`);
+    console.log(`🧑‍💻 - Server running in port :${ port } -🧑‍💻`)
   });
