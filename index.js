@@ -4,6 +4,9 @@ const connectDB = require("./db");
 const { config } = require('./config')
 const app = require('./server');
 
+const prod = config.server.prod
+const dev  = config.server.dev
+
 // Read fs key xxx.pem
 
 // db
@@ -17,5 +20,5 @@ const server = http.createServer(app);
 
 // listen server http with express APP
 server.listen(port, () => {
-    console.log(`🧑‍💻- Server running ${process.env.NODE_DEV ? config.server.dev : config.server.prod} in port :${port} -🧑‍💻`)
+    console.log(`🧑‍💻 - Server running ${process.env.NODE_DEV ? dev : prod} in port :${port} - 🌐`)
   })

@@ -20,7 +20,7 @@ const connectDB = async () => {
   if (process.env.NODE_ENV) {
     try {
       await mongoose.connect(config.bbdd.db_prod, v6_options)
-      return console.log(`👌- Base de datos conectada :PRODUCTION: -👌`);
+      return console.log(`🧑‍💻 - Base de datos conectada :PRODUCTION: - 📡`);
     } catch (errProd) {
       return console.error(
         `🚨 :: Error al iniciar la base de datos REMOTA EN MONGODB :: 🚨`, errProd )
@@ -28,7 +28,7 @@ const connectDB = async () => {
   } else {
     try {
       await mongoose.connect(config.bbdd.db_dev, v5_options);
-      return console.log(`🧑‍💻- Base de datos conectada :DEVELOPMENT: -🧑‍💻`);
+      return console.log(`🧑‍💻 - Base de datos conectada :DEVELOPMENT: - 🧑‍💻`);
     } catch (errDev) {
       return console.error(
         `🚨 :: Error al iniciar la base de datos LOCAL EN S.O. :: 🚨`, errDev )
