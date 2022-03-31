@@ -12,7 +12,7 @@ const config = {
     },
     bbdd:{
         db_prod: process.env.DB_PROD ,
-        db_dev: process.env.DB_DEV ,
+        db_dev: process.env.DB_WSL2 || process.env.DB_DEV
     }
 };
 

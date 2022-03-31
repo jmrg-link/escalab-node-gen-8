@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { config } = require('../config');
+const { config } = require("../config")//?
 
 const v5_options = {
   useNewUrlParser: true,
@@ -19,19 +19,19 @@ const v6_options = {
 const connectDB = async () => {
   if (process.env.NODE_ENV) {
     try {
-      await mongoose.connect(config.bbdd.db_prod, v6_options);
-      return console.log(`👌 -  Base de datos conectada :PRODUCTION: - 👌`);
+      await mongoose.connect(config.bbdd.db_prod, v6_options)
+      return console.log(`👌- Base de datos conectada :PRODUCTION: -👌`);
     } catch (errProd) {
-      return console.error(errProd);
-      `🚨 :: Error al iniciar la base de datos REMOTA EN MONGODB :: 🚨`, errProd;
+      return console.error(
+        `🚨 :: Error al iniciar la base de datos REMOTA EN MONGODB :: 🚨`, errProd )
     }
   } else {
     try {
       await mongoose.connect(config.bbdd.db_dev, v5_options);
-      return console.log(`👌 - Base de datos conectada :DEVELOPMENT: - 👌`);
+      return console.log(`🧑‍💻- Base de datos conectada :DEVELOPMENT: -🧑‍💻`);
     } catch (errDev) {
-      return console.error( `🚨 :: Error al iniciar la base de datos LOCAL EN S.O. :: 🚨`, errDev
-      )
+      return console.error(
+        `🚨 :: Error al iniciar la base de datos LOCAL EN S.O. :: 🚨`, errDev )
     }
   }
 }

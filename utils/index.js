@@ -1,6 +1,6 @@
 const appRoot = require("app-root-path");
 const winston = require("winston");
-const { config } = require("../config");
+const { config } = require("../config")
 
 const logger = winston.createLogger({
   level: "info",
@@ -38,7 +38,7 @@ const logger = winston.createLogger({
   handleExceptions: true,
   maxsize: 10485760, // 10 MB
   maxFiles: 5,
-});
+})
 
 if (config.server.dev !== config.server.prod) {
   logger.add(
