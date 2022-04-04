@@ -4,6 +4,9 @@
 ### dotenv ###
 .env
 
+### .pem ###
+*.pem
+
 ### Firebase ###
 .idea/
 **/node_modules/*

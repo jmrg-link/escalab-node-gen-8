@@ -1,5 +1,6 @@
 //server/index.js
 const express = require('express')
+const http2Express = require('http2-express-bridge')
 const morgan = require('morgan')
 const { readdirSync } = require("fs")
 const cors = require('cors')
@@ -10,16 +11,18 @@ const logger = require('../utils')
 const { tools } = config.server;
 
 // Iniciate App
-const app = express()
+const app = http2Express(express)
 
 // Setup middleware
 app.use(morgan(tools, { stream: logger.stream }));
 app.use(express.json({ limit: "2mb" }))
-app.use(cors())
+app.use(cors( { origin: '*' }))
 
 // ROUTES - > Setup router and routes versionate v1 & more
 readdirSync("./server/api/v1/global/routes").map((r) => app.use("/api/v1", require("./api/v1/global/routes/" + r)));
-//readdirSync("./api/v1/timeControl/routes").map((r) => app.use("/api", require("./api/v1/timeControl/routes/" + r)));
+readdirSync("./server/api/v1/timeControl/routes").map((r) => app.use("/api/v1", require("./api/v1/timeControl/routes/" + r)));
+
+
 
 // No route found handler
 app.use((req, res, next) => {
@@ -29,5 +32,15 @@ app.use((req, res, next) => {
       level: 'warn',
     });
   })
+
+// Error handler
+app.use((err, req, res, next) => {
+    const {statusCode = 500 , message} = err
+    logger.error(statusCode)
+    res.json({
+        message
+    })
+})
+
 
 module.exports = app
