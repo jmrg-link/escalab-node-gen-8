@@ -1,18 +1,23 @@
 const express = require( "express" );
 const router = express.Router();
 
+const { createUser , findAllUser , findUser } = require('../controllers/user.controller');
+
 // [ENDPOINTS GLOBAL USER]
 // [GET - READ]
-router.get( "/user/:id" )
-router.get( "/users" )
+router.get( "/user/:id",findUser )
+router.get( "/users",findAllUser )
 
 // [PUT - UPDATE]
-router.put( "/user/:id" )
+//router.put( "/user/:id",updateUser )
 
 // [POST - CREATE]
-router.post( "/user" )
+router.post( "/user", createUser )
+
+// [PATCH - REMOVESOFT]
+//router.patch("/user/:id", removeSoftUser);
 
 // [DELETE - DELETE]
-router.delete( "/user/:id" )
+//router.delete( "/user/:id",removeUserId )
 
 module.exports = router;

@@ -1,14 +1,13 @@
 const { Schema , model } = require( "mongoose" );
-const { String } = Schema;
 
 const RoleSchema = new Schema( {
-    roles: {
-        type: String ,
-        default: 'CUSTOMER_ROLE' ,
-        enum: [ 'CUSTOMER_ROLE' , 'ADMIN_ROLE' , 'OFFICE_ROLE' , 'WORKER_ROLE' ] ,
+    role: {
+        type: String,
+        require:[true,'Role is required'],
+        trim:true,
     } ,
-
 } )
+
 RoleSchema.methods.toJSON = function () {
     const { __v , _id , ...role } = this.toObject();
     role.id = _id;

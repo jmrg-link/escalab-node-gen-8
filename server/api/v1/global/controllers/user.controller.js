@@ -1,16 +1,64 @@
-// const User = require('../models/user')
+const User = require('../models/user')
+const bcryptjs = require( 'bcryptjs' )
 
-const userById = async ( req , res , next ) => {
-    let user = await User.findById({
-        if(!user){
-            return res.status(400).json({
-                error: "Usuario no encontrado"
-            }).exec(user)
-        }
-    })
-    next()
+exports.createUser = async (req,res) => {
+    try {
+        const { username , name , lastname , password , email , role  } = req.body
+        const user = new User({ username , name , lastname , password , email , role })
+        
+        // encrypt password -> user.password (10 salt)
+        const salt = bcryptjs.genSaltSync( 10 )
+        user.password = bcryptjs.hashSync( password , salt )
+
+        await user.save()
+        res.status(202).json({
+            user,
+            msg:`User created ${username} with email ${email}`
+        })
+
+    } catch (error) {
+        res.status(400).json({
+            err:error.message,
+            code:error.code
+        })
+    }
 }
 
-//module.exports = {
-//    userById
-//}
+exports.findAllUser = async (req,res) => {
+    const { limit = 5, from = 0 } = req.query
+    const query = { status:'Active'}
+    try {
+        const [total, users ] = await Promise.all([
+            User.countDocuments(query),
+            User.find(query)
+                .limit(Number(limit))
+                .skip(Number(from))
+        ])
+        res.status(200).json({
+            total,
+            users,
+        })
+    } catch (error) {
+        res.status(400).json({
+            err:error.message,
+            code:error.code
+        })
+    }
+}
+
+exports.findUser = async (req,res) => {
+    try {
+        const { id } = req.params
+        const user = await User.findById( id )
+        res.json( {
+            msg: `Is userId ${id}` ,
+            user ,
+        } );
+    } catch (error) {
+        res.status(400).json({
+            err:error.message,
+            code:error.code
+        })
+    }
+    
+}
