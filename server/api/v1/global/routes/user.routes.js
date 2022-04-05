@@ -1,7 +1,7 @@
 const express = require( "express" );
 const router = express.Router();
 
-const { createUser , findAllUser , findUser } = require('../controllers/user.controller');
+const { createUser , findAllUser , findUser , updateUser} = require('../controllers/user.controller')
 
 // [ENDPOINTS GLOBAL USER]
 // [GET - READ]
@@ -9,7 +9,7 @@ router.get( "/user/:id",findUser )
 router.get( "/users",findAllUser )
 
 // [PUT - UPDATE]
-//router.put( "/user/:id",updateUser )
+router.put( "/user/:id",updateUser )
 
 // [POST - CREATE]
 router.post( "/user", createUser )
