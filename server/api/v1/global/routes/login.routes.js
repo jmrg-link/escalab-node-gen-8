@@ -1,8 +1,8 @@
-const express = require("express");
+const express = require( "express" );
 const router = express.Router();
-const {loginUser} = require('../controllers/user.login')
+const { loginUser } = require( '../controllers/user.login' )
 
 // [ENDPOINTS GLOBAL LOGIN]
-router.post( "/login", loginUser)
+router.post( "/login" , loginUser )
 
 module.exports = router;

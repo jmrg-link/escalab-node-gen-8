@@ -84,33 +84,33 @@ exports.updateUser = async ( req , res ) => {
 exports.removeUserId = async ( req , res ) => {
     try {
         const { id } = req.params;
-    const user = await User.findByIdAndDelete(id)
-    res.status(200).json({
-        user,
-        msg:`User deleted ${id} from database`
-    })
-    } catch (error) {
+        const user = await User.findByIdAndDelete( id )
+        res.status( 200 ).json( {
+            user ,
+            msg: `User deleted ${ id } from database`
+        } )
+    } catch ( error ) {
         res.status( 400 ).json( {
             err: error.message ,
             code: error.code ,
         } );
     }
-    
+
 }
 
 exports.removeSoftUserId = async ( req , res ) => {
     try {
-    const { id } = req.params;
-    const user = await User.findByIdAndUpdate( id, {status : "Inactive"} )
-    res.status(200).json({
-        user,
-        msg:`User deleted soft with id: ${id} and email:${user.email} with status is :${user.status}`
-    })
-    } catch (error) {
+        const { id } = req.params;
+        const user = await User.findByIdAndUpdate( id , { status: "Inactive" } )
+        res.status( 200 ).json( {
+            user ,
+            msg: `User deleted soft with id: ${ id } and email:${ user.email } with status is :${ user.status }`
+        } )
+    } catch ( error ) {
         res.status( 400 ).json( {
             err: error.message ,
             code: error.code ,
         } );
     }
-    
+
 }

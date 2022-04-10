@@ -13,28 +13,23 @@ const options = {
     key: readFileSync( "server.pem" ) ,
     cert: readFileSync( "server.crt.pem" ) ,
     allowHTTP1: true ,
-};
+}
 
 // db
-connectDB();
+connectDB()
 
 // extract  port config
 const { port } = config.server;
+let nfo = console.log( `🧑‍💻 - Server running ${ process.env.NODE_DEV ? dev : prod } in port :${ port } - 🌐` )
 
 const notServerSecure = () => {
     const server = http2.createServer( app );
-    server.listen( port , () => {
-        console.log(
-            `🧑‍💻 - Server running ${ process.env.NODE_DEV ? dev : prod } in port :${ port } - 🌐` );
-    } );
+    server.listen( port , () => { nfo } );
 };
 
 const secureServer = () => {
     const server = http2.createSecureServer( options , app );
-    server.listen( port , () => {
-        console.log(
-            `🧑‍💻 - Server running ${ process.env.NODE_DEV ? dev : prod } in port :${ port } - 🌐` );
-    } );
+    server.listen( port , () => { nfo } );
 };
 
 if ( config.server.prod !== config.server.dev ) {

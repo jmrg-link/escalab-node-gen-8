@@ -2,13 +2,14 @@
 const appRoot = require( "app-root-path" );
 const winston = require( "winston" );
 const { config } = require( "../config" )
+const req = require( "express/lib/request" );
 
 const logger = winston.createLogger( {
     level: "info" ,
     format: winston.format.combine(
-        winston.format.timestamp( { format: "YYYY-MM-DD HH:mm:ss" } ) ,
-        winston.format.printf( ( { level , message , timestamp } ) => {
-            return `[${ level } | ${ timestamp } | ${ message } ]`;
+        winston.format.timestamp( { format: "DD-MM-YYYY HH:mm:ss" } ) ,
+        winston.format.printf( ( { level , label , message ,  timestamp } ) => {
+            return `[ ${ level } | ${ timestamp } | ${ message.trim() } ]`;
         } )
     ) ,
     transports: [
@@ -33,9 +34,6 @@ if ( config.server.prod !== config.server.dev ) {
 logger.stream = {
     write: function ( message , encoding ) {
         logger.info( message );
-        //logger.warn(message);
-        //logger.error(message)
-        //logger.data(message)
     } ,
 };
 

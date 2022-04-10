@@ -7,7 +7,6 @@
   </br>
 </div>
 
-
 ## Requisitos :clipboard:
 
 * Conocimiento básico de JavaScript es necesario
