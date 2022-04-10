@@ -21,10 +21,32 @@ connectDB()
 // extract  port config
 const { port } = config.server
 
-// create http or http2 with fs
-const server = http2.createSecureServer( options , app )
 
-// listen server http with express APP
-server.listen( port , () => {
+const notServerSecure = () => {
+
+    const server = http2.createServer(  app )
+    server.listen( port , () => {
+        console.log( `🧑‍💻 - Server running ${ process.env.NODE_DEV ? dev : prod } in port :${ port } - 🌐` )
+    })
+}
+const secureServer = () => {
+    const server = http2.createSecureServer( options , app ) 
+    server.listen( port , () => {
     console.log( `🧑‍💻 - Server running ${ process.env.NODE_DEV ? dev : prod } in port :${ port } - 🌐` )
-} )
+    })
+}
+
+if(config.server.prod !== config.server.dev){
+    secureServer()
+} else {
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
+    notServerSecure()
+}
+
+
+
+
+
+
+
+

@@ -2,7 +2,8 @@ const User = require('../models/user')
 
 
 exports.loginUser = async (req,res) => {
-    const { email , password , username} = req.body
+    const { username ,email , password} = req.body
+    
     try {
         const user = await User.findOne({email})
         if(!user){
@@ -16,7 +17,7 @@ exports.loginUser = async (req,res) => {
             } )
         }
         res.status(200).json({
-            user
+           user
         })
     } catch (error) {
         res.status(500).json({

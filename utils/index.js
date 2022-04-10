@@ -23,7 +23,7 @@ const logger = winston.createLogger({
   maxsize: 10485760, // 10 MB
   maxFiles: 5,
 })
-if (config.server.dev !== config.server.prod) {
+if (config.server.prod !== config.server.dev) {
   logger.add(
     new winston.transports.Console({
       format: winston.format.combine(winston.format.colorize()),
