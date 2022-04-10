@@ -1,52 +1,45 @@
 // index.js
-const http2 = require( 'http2' )
-const { readFileSync } = require( 'fs' )
+const http2 = require( "http2" );
+const { readFileSync } = require( "fs" );
 const connectDB = require( "./db" );
-const { config } = require( './config' )
-const app = require( './server' );
+const { config } = require( "./config" );
+const app = require( "./server" );
 
-const prod = config.server.prod
-const dev = config.server.dev
+const prod = config.server.prod;
+const dev = config.server.dev;
 
 // Read fs key xxx.pem
 const options = {
-    key: readFileSync( 'server.pem' ) ,
-    cert: readFileSync( 'server.crt.pem' ) ,
-    allowHTTP1: true
-}
+    key: readFileSync( "server.pem" ) ,
+    cert: readFileSync( "server.crt.pem" ) ,
+    allowHTTP1: true ,
+};
 
 // db
-connectDB()
+connectDB();
 
 // extract  port config
-const { port } = config.server
-
+const { port } = config.server;
 
 const notServerSecure = () => {
-
-    const server = http2.createServer(  app )
+    const server = http2.createServer( app );
     server.listen( port , () => {
-        console.log( `🧑‍💻 - Server running ${ process.env.NODE_DEV ? dev : prod } in port :${ port } - 🌐` )
-    })
-}
+        console.log(
+            `🧑‍💻 - Server running ${ process.env.NODE_DEV ? dev : prod } in port :${ port } - 🌐` );
+    } );
+};
+
 const secureServer = () => {
-    const server = http2.createSecureServer( options , app ) 
+    const server = http2.createSecureServer( options , app );
     server.listen( port , () => {
-    console.log( `🧑‍💻 - Server running ${ process.env.NODE_DEV ? dev : prod } in port :${ port } - 🌐` )
-    })
-}
+        console.log(
+            `🧑‍💻 - Server running ${ process.env.NODE_DEV ? dev : prod } in port :${ port } - 🌐` );
+    } );
+};
 
-if(config.server.prod !== config.server.dev){
-    secureServer()
+if ( config.server.prod !== config.server.dev ) {
+    secureServer();
 } else {
-    process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
-    notServerSecure()
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+    notServerSecure();
 }
-
-
-
-
-
-
-
-
