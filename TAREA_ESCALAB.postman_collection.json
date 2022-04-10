@@ -1,0 +1,252 @@
+{
+	"info": {
+		"_postman_id": "ecf7005a-9a80-44fe-91dd-21422f4b97ff",
+		"name": "TAREA_ESCALAB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "USUARIOS",
+			"item": [
+				{
+					"name": "POST -  CREATE USER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"jmrg-topanga\",\r\n    \"name\":\"Jesus Maria\",\r\n    \"lastname\":\"Rico Gonzalez\",\r\n    \"password\":\"Jesus@84\",\r\n    \"email\":\"topanga@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.local:8888/api/v1/user",
+							"protocol": "https",
+							"host": [
+								"api",
+								"local"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET : ALL USERS QUERY",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.local:8888/api/v1/users?username=jmrg",
+							"protocol": "https",
+							"host": [
+								"api",
+								"local"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "elmesl@gmail.com",
+									"disabled": true
+								},
+								{
+									"key": "username",
+									"value": "jmrg"
+								},
+								{
+									"key": "username",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "Active",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET :  ID -  FIND USER ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.local:8888/api/v1/user/6252b69bf0f8dce495533be7",
+							"protocol": "https",
+							"host": [
+								"api",
+								"local"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"6252b69bf0f8dce495533be7"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "contactame@jmrg.link",
+									"disabled": true
+								},
+								{
+									"key": "username",
+									"value": "jmrg",
+									"disabled": true
+								},
+								{
+									"key": "username",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "Active",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT : ID - UPDATE USER",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\":\"Active\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.local:8888/api/v1/user/6252b69bf0f8dce495533be7",
+							"protocol": "https",
+							"host": [
+								"api",
+								"local"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"6252b69bf0f8dce495533be7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE : ID - DELETE PERMANENT",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://api.local:8888/api/v1/user/6252b2d20af6071553f001f2",
+							"protocol": "https",
+							"host": [
+								"api",
+								"local"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"6252b2d20af6071553f001f2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH SOFT :  DELETE STATUS SOFT",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "https://api.local:8888/api/v1/user/6252b69bf0f8dce495533be7",
+							"protocol": "https",
+							"host": [
+								"api",
+								"local"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"6252b69bf0f8dce495533be7"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints usuarios"
+		},
+		{
+			"name": "LOGIN",
+			"item": [
+				{
+					"name": "POST - LOGIN USER",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"contactame@jmrg.link\",\r\n    \"username\":\"jmrg\",\r\n    \"password\":\"TeKnO@2022\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.local:8888/api/v1/login",
+							"protocol": "https",
+							"host": [
+								"api",
+								"local"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Login para realizar testing desde api"
+		}
+	]
+}
